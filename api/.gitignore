@@ -1,0 +1,37 @@
+.DS_Store
+.env
+.flaskenv
+*.pyc
+*.pyo
+OLD*
+venv/
+venv*
+dist/
+build/
+*.egg
+*.egg-info/
+_mailinglist
+.tox/
+.cache/
+.pytest_cache/
+.idea/
+docs/_build/
+.vscode
+*__pycache__*
+
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+*,cover
+
+
+# Custom Holds
+redis-stable/
+local/
+
+
+# Static File Holds
+api/static/downloads/*
+api/static/uploads/*
