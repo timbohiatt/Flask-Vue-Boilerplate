@@ -19,6 +19,10 @@ docs/_build/
 .vscode
 *__pycache__*
 
+#SQL Alchemy Migrations
+.migrations/
+.migrations*
+
 
 # Coverage reports
 htmlcov/

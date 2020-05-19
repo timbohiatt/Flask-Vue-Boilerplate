@@ -1,0 +1,2 @@
+#Default Reccomendation for Linking to Flask Backend. 
+BASE_URL=http://localhost:5000/v1

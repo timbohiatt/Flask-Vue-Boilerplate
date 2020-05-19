@@ -12,16 +12,16 @@ from api.v1_users import bp
 
 
 class UserAPI(MethodView):
-    #Response Nesting Title
-    self.schemaTitle = 'users'
+	#Response Nesting Title
+	nestResponseTitle = 'users'
 
-    def get(self):
-        vUsers = User.query.all()
-        return success_request(message="Found {} commentds for Row ID {}.".format(len(vUsers), ROW_ID), data=UserSchema().dump(vUsers, many=True), title=self.schemaTitle)
-        
+	def get(self):
+		vUsers = User.query.all()
+		return success_request(message="Found {} commentds for Row ID {}.".format(len(vUsers), ROW_ID), data=UserSchema().dump(vUsers, many=True), title=nestResponseTitle)
+		
 
-    def post(self):
-        user = User.from_form_data(request.form)
-        
+	def post(self):
+		user = User.from_form_data(request.form)
+		
 
 bp.add_url_rule('/', view_func=UserAPI.as_view('users'))
