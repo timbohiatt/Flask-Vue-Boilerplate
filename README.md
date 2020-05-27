@@ -6,7 +6,7 @@ Welcome to my Flask and Vue Boilerplate.
 
 When I have a new Web Application to build I go to this template as a starting point. It has almost everything I need to have API's Running within Minutes.
 
-##### Whats Inclued:
+##### Whats Included:
 
 - **Flask**
 
