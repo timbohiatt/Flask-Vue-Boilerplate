@@ -14,18 +14,18 @@ class Config(object):
 
 
     #APPLICATION VARIABLES
-    APP_NAME =  os.environ.get('APP_NAME') or "LOCALHOST"
-    APP_ENV = os.environ.get('APP_ENV') or "LCL"
+    APP_NAME =  os.environ.get('APP_NAME') or "localhost"
+    APP_ENV = os.environ.get('APP_ENV') or "dev"
     APP_PORT = os.environ.get('APP_PORT') or 5000
 
     #FLASK VARIABLES
     #FLASK_ENV = APP_ENV
-    SERVER_NAME = os.environ.get('APP_SERVER_NAME') or 'LOCALHOST'+":"+APP_PORT
+    SERVER_NAME = os.environ.get('APP_SERVER_NAME') or 'localhost'+":"+APP_PORT
     SECRET_KEY = os.environ.get('SECRET_KEY') or binascii.hexlify(os.urandom(16))
 
     #CELERY VARIABLES
-    CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL') or 'redis://localhost:6379/0'
-    CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND') or 'redis://localhost:6379/0'
+    CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL') or 'redis://redis:6379/0'
+    CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND') or 'redis://redis:6379/0'
 
     
     #DEBUG VARIABLES
