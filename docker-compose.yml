@@ -1,0 +1,62 @@
+version: '3.7'
+
+services:
+
+  api: &api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./api:/app
+    environment:
+      WAIT_HOSTS: db:3306
+    env_file:
+      - ./api/.env
+    ports:
+      - 5000:5000
+    command: sh -c "/wait && /boot.sh"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    depends_on:
+      - api
+    volumes:
+      - ./web:/app
+    environment:
+      WAIT_HOSTS: api:5000, db:3306
+    env_file:
+      - ./web/.env
+    ports:
+      - 3000:3000
+    command: sh -c "/wait && /boot.sh"
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./api/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=your_password
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=your_password
+      - MYSQL_DATABASE=testdb
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+
+  celeryworker:
+    <<: *api
+    depends_on:
+      - redis
+      - db
+    environment:
+      WAIT_HOSTS: db:3306, redis:6379
+    ports: []
+    command: sh -c "/wait && /start-celeryworker.sh"
+  
+  redis:
+    image: redis:5.0

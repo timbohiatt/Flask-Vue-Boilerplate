@@ -11,7 +11,8 @@ def register(app):
 	def run_tests(): 
 		"""Destroys the MySQL Database for compelte rebuild"""
 		import pymysql.cursors
-		connection = pymysql.connect(host=app.config['DB_HOST'],
+		connection = pymysql.connect(host='db',
+							 port=3306,
                              user=app.config['DB_USER'],
                              password=app.config['DB_PASS'],
                              db=app.config['DB_NAME'],

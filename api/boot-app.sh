@@ -1,14 +1,11 @@
 #!/bin/bash
-# this script is used to boot a Docker container
-source venv/bin/activate
-
 set -o allexport; source .env; set +o allexport
 
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-#When Running Environment LCL the Whole DB is rebuit every time you boot the server.
-if [[ $APP_ENV == "LCL" ]]; then
+# If DB is up and running in environment dev the whole DB is rebuit every time you boot the server.
+if [[ $APP_ENV == "dev" ]]; then
     #Clean up all DB Version and migrarion information.
     rm -r migrations
     rm *.db
